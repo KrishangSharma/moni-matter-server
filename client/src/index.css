@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-custom-radial-gradient {
+    @apply bg-cover;
+    background: radial-gradient(circle at 50% 10%, rgba(155, 252, 0, 0.295), rgba(255, 0, 0, 0) 50.71%),
+                radial-gradient(circle at 70% 50%, rgba(1, 121, 41, 0.856), rgba(0, 255, 0, 0) 60.71%),
+                radial-gradient(circle at 30% 10%, rgba(176, 204, 16, 0.685), rgba(8, 45, 46, 0) 60.71%);
+}
+
+.bg-custom-radial-gradient2 {
+    @apply bg-cover;
+    background: radial-gradient(circle at 90% 90%, rgba(2, 167, 57, 0.397), rgba(255, 0, 0, 0) 40.71%),
+                radial-gradient(circle at 10% 10%, rgba(2, 167, 57, 0.397), rgba(0, 255, 0, 0) 60.71%),
+                radial-gradient(circle at 0% 10%, rgba(176, 204, 16, 0.514), rgba(8, 45, 46, 0) 40.71%);
+}
+
+.bg-gradient-home {
+    @apply bg-cover;
+    background-color: #018543;
+    background-image: 
+                radial-gradient(circle at 120% 0%, rgba(244, 21, 252, 0.39), rgba(255, 0, 0, 0) 50.71%),
+                radial-gradient(circle at 100% 90%, rgba(24, 169, 236, 0.76), rgba(0, 255, 0, 0) 60.71%),
+                radial-gradient(circle at -10% 10%, rgba(214, 248, 19, 0.795), rgba(8, 45, 46, 0) 60.71%);
+}
+                
+
