@@ -7,7 +7,7 @@ const Transaction = require("../models/transactionModel");
 // Add a transaction
 const addTransaction = async (req, res) => {
   try {
-    const { amount, category, description } = req.body;
+    const { amount, name, category, description } = req.body;
     const receipt = req.file;
 
     let receiptUrl;
@@ -21,6 +21,7 @@ const addTransaction = async (req, res) => {
     // Construct a Transaction Object
     const newTransaction = new Transaction({
       amount,
+      name,
       category,
       receipt: receiptUrl,
       description,

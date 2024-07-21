@@ -1,52 +1,51 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
-
+import { useState } from "react";
+import { NavLink as Link } from "react-router-dom";
 
 //temporarily removed all styling
 const Header = () => {
-    const navItems = [
-        { to: "/home", label: "Home" },
-        { to: "/transactions", label: "Transactions" },
-        { to: "/groups", label: "Groups" },
-        { to: "/reports", label: "Reports" },
-      ];
-    
-  return (
-    <div className="w-screen h-[4.5rem] shadow-md text-2xl flex items-center justify-between absolute px-6">
-        <div>
-        <Link to='#'>
-        <h1 className='w-44 p-1 flex items-center justify-center rounded-xl'>Moni Matter</h1>
-        </Link>
-        </div>
-          <div>
-          <ul className="flex mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-      {navItems.map((item, index) => (
-        <li key={index}>
-          <NavLink
-            to={item.to}
-            className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 duration-200 text-xl ${
-                isActive ? "text-emerald-700" : "text-black"
-              } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-emerald-700 lg:p-0`
-            }
-          >
-            {item.label}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-    </div>  
-    <div className='flex flex-row gap-3'>
-        {/*This is going to be a toggle button for light and dark mode */}
-        <div className='text-xl'>toggle</div>
-    <Link to='/profile'>
-     <div>
-        <h1 className='text-xl'>Profile</h1>
-    </div>
-    </Link>
-    </div>
-    </div>
-  )
-}
+  const [loggedIn, setLoggedIn] = useState(false);
 
-export default Header
+  const navItems = [
+    { to: "/home", label: "Home" },
+    { to: "/transactions", label: "Transactions" },
+    { to: "/groups", label: "Groups" },
+    { to: "/reports", label: "Reports" },
+  ];
+
+  return (
+    <nav className="w-screen h-28 border-b flex items-center justify-between px-10">
+      <div className="w-1/2 h-full flex items-center gap-5">
+        <Link to="/" className="text-4xl font-bold">
+          Moni Matter
+        </Link>
+        {loggedIn ? (
+          <div className="h-1/3 w-[0.5px] rounded-full bg-secondary-500"></div>
+        ) : null}
+        <div className="h-full flex items-center gap-3 text-lg">
+          {loggedIn
+            ? navItems.map((item, index) => (
+                <Link key={index} to={item.to}>
+                  {item.label}
+                </Link>
+              ))
+            : null}
+        </div>
+      </div>
+      {/* User Actions */}
+      <div>
+        {loggedIn ? (
+          <h2>Profile Icon</h2>
+        ) : (
+          <Link
+            to="/login"
+            className="border border-accent-500 rounded-md px-6 py-2 hover:bg-accent-500 hover:text-text-50 transition-colors duration-150"
+          >
+            Login
+          </Link>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Header;

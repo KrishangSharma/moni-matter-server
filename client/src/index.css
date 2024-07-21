@@ -1,28 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Colorss */
+@layer base {
+  :root {
+    --text-50: #ebf9f4;
+    --text-100: #d8f3e9;
+    --text-200: #b1e7d3;
+    --text-300: #8adbbd;
+    --text-400: #63cfa7;
+    --text-500: #3cc392;
+    --text-600: #309c74;
+    --text-700: #247557;
+    --text-800: #184e3a;
+    --text-900: #0c271d;
+    --text-950: #06140f;
+
+    --background-50: #ebfaf4;
+    --background-100: #d7f4e9;
+    --background-200: #aeead4;
+    --background-300: #86dfbe;
+    --background-400: #5ed4a9;
+    --background-500: #36c993;
+    --background-600: #2ba176;
+    --background-700: #207958;
+    --background-800: #15513b;
+    --background-900: #0b281d;
+    --background-950: #05140f;
+
+    --primary-50: #ebf9f4;
+    --primary-100: #d7f4e9;
+    --primary-200: #afe9d3;
+    --primary-300: #88ddbc;
+    --primary-400: #60d2a6;
+    --primary-500: #38c790;
+    --primary-600: #2d9f73;
+    --primary-700: #227756;
+    --primary-800: #16503a;
+    --primary-900: #0b281d;
+    --primary-950: #06140e;
+
+    --secondary-50: #ebecf9;
+    --secondary-100: #d7d9f4;
+    --secondary-200: #afb2e9;
+    --secondary-300: #888cdd;
+    --secondary-400: #6066d2;
+    --secondary-500: #383fc7;
+    --secondary-600: #2d339f;
+    --secondary-700: #222677;
+    --secondary-800: #161950;
+    --secondary-900: #0b0d28;
+    --secondary-950: #060614;
+
+    --accent-50: #f2ebf9;
+    --accent-100: #e5d7f4;
+    --accent-200: #cbb0e8;
+    --accent-300: #b188dd;
+    --accent-400: #9761d1;
+    --accent-500: #7d39c6;
+    --accent-600: #642e9e;
+    --accent-700: #4b2277;
+    --accent-800: #32174f;
+    --accent-900: #190b28;
+    --accent-950: #0d0614;
+  }
+  .dark {
+    --text-50: #06140e;
+    --text-100: #0c271d;
+    --text-200: #184e39;
+    --text-300: #247556;
+    --text-400: #309c73;
+    --text-500: #3cc38f;
+    --text-600: #63cfa6;
+    --text-700: #8adbbc;
+    --text-800: #b1e7d2;
+    --text-900: #d8f3e9;
+    --text-950: #ebf9f4;
+
+    --background-50: #05140f;
+    --background-100: #0a291f;
+    --background-200: #14523d;
+    --background-300: #1f7a5c;
+    --background-400: #29a37a;
+    --background-500: #33cc99;
+    --background-600: #5cd6ad;
+    --background-700: #85e0c2;
+    --background-800: #adebd6;
+    --background-900: #d6f5eb;
+    --background-950: #ebfaf5;
+
+    --primary-50: #06140e;
+    --primary-100: #0b281d;
+    --primary-200: #16503a;
+    --primary-300: #227756;
+    --primary-400: #2d9f73;
+    --primary-500: #38c790;
+    --primary-600: #60d2a6;
+    --primary-700: #88ddbc;
+    --primary-800: #afe9d3;
+    --primary-900: #d7f4e9;
+    --primary-950: #ebf9f4;
+
+    --secondary-50: #060614;
+    --secondary-100: #0b0d28;
+    --secondary-200: #161950;
+    --secondary-300: #222677;
+    --secondary-400: #2d339f;
+    --secondary-500: #383fc7;
+    --secondary-600: #6066d2;
+    --secondary-700: #888cdd;
+    --secondary-800: #afb2e9;
+    --secondary-900: #d7d9f4;
+    --secondary-950: #ebecf9;
+
+    --accent-50: #0d0614;
+    --accent-100: #190b28;
+    --accent-200: #32174f;
+    --accent-300: #4b2277;
+    --accent-400: #642e9e;
+    --accent-500: #7d39c6;
+    --accent-600: #9761d1;
+    --accent-700: #b188dd;
+    --accent-800: #cbb0e8;
+    --accent-900: #e5d7f4;
+    --accent-950: #f2ebf9;
+  }
+}
+
+/* Custom Gradient */
+
 .bg-custom-radial-gradient {
-    @apply bg-cover;
-    background: radial-gradient(circle at 50% 10%, rgba(155, 252, 0, 0.295), rgba(255, 0, 0, 0) 50.71%),
-                radial-gradient(circle at 70% 50%, rgba(1, 121, 41, 0.856), rgba(0, 255, 0, 0) 60.71%),
-                radial-gradient(circle at 30% 10%, rgba(176, 204, 16, 0.685), rgba(8, 45, 46, 0) 60.71%);
+  @apply bg-cover;
+  background: radial-gradient(
+      circle at 50% 10%,
+      rgba(155, 252, 0, 0.295),
+      rgba(255, 0, 0, 0) 50.71%
+    ),
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(1, 121, 41, 0.856),
+      rgba(0, 255, 0, 0) 60.71%
+    ),
+    radial-gradient(
+      circle at 30% 10%,
+      rgba(176, 204, 16, 0.685),
+      rgba(8, 45, 46, 0) 60.71%
+    );
 }
 
 .bg-custom-radial-gradient2 {
-    @apply bg-cover;
-    background: radial-gradient(circle at 90% 90%, rgba(2, 167, 57, 0.397), rgba(255, 0, 0, 0) 40.71%),
-                radial-gradient(circle at 10% 10%, rgba(2, 167, 57, 0.397), rgba(0, 255, 0, 0) 60.71%),
-                radial-gradient(circle at 0% 10%, rgba(176, 204, 16, 0.514), rgba(8, 45, 46, 0) 40.71%);
+  @apply bg-cover;
+  background: radial-gradient(
+      circle at 90% 90%,
+      rgba(2, 167, 57, 0.397),
+      rgba(255, 0, 0, 0) 40.71%
+    ),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(2, 167, 57, 0.397),
+      rgba(0, 255, 0, 0) 60.71%
+    ),
+    radial-gradient(
+      circle at 0% 10%,
+      rgba(176, 204, 16, 0.514),
+      rgba(8, 45, 46, 0) 40.71%
+    );
 }
 
 .bg-gradient-home {
-    @apply bg-cover;
-    background-color: #018543;
-    background-image: 
-                radial-gradient(circle at 120% 0%, rgba(244, 21, 252, 0.39), rgba(255, 0, 0, 0) 50.71%),
-                radial-gradient(circle at 100% 90%, rgba(24, 169, 236, 0.76), rgba(0, 255, 0, 0) 60.71%),
-                radial-gradient(circle at -10% 10%, rgba(214, 248, 19, 0.795), rgba(8, 45, 46, 0) 60.71%);
+  @apply bg-cover;
+  background-color: #018543;
+  background-image: radial-gradient(
+      circle at 120% 0%,
+      rgba(244, 21, 252, 0.39),
+      rgba(255, 0, 0, 0) 50.71%
+    ),
+    radial-gradient(
+      circle at 100% 90%,
+      rgba(24, 169, 236, 0.76),
+      rgba(0, 255, 0, 0) 60.71%
+    ),
+    radial-gradient(
+      circle at -10% 10%,
+      rgba(214, 248, 19, 0.795),
+      rgba(8, 45, 46, 0) 60.71%
+    );
 }
-                
-
