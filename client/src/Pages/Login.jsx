@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Button, Input } from "../design/index";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -16,7 +17,6 @@ const schema = z.object({
 });
 
 function Login() {
-  const navigate = useNavigate();
 
   const {
     register,
@@ -28,9 +28,6 @@ function Login() {
     mode: "onChange",
   });
 
-  const buttonHandler = () => {
-    navigate("/signup");
-  };
 
   const login = async (data) => {
     const userinfo = {
@@ -57,15 +54,15 @@ function Login() {
   };
 
   return (
-    <div className="bg-[#0e4b32]">
-      <div className="w-full h-[calc(100vh-112px)] flex flex-col items-center  bg-custom-radial-gradient2 bg-rad  text-white">
-        <div className="w-full h-24 mt-7 flex flex-col items-center justify-center gap-2">
+
+      <main className="w-full h-screen flex flex-col items-center justify-center">
+        <header className="w-full h-24 mt-9 flex flex-col items-center justify-center gap-2">
           <h1 className="text-4xl font-semibold">Sign in</h1>
           <h1 className="text-xl">Login to get started.</h1>
-        </div>
-        <div className="w-10/12 lg:w-4/12 md:w-7/12 md:h-2/4 h-2/4 rounded-xl mt-4 bg-white flex items-center justify-center lg:px-16 text-[#00804be8]">
+        </header>
+        <section className="w-10/12 lg:w-4/12 md:w-7/12 md:h-2/4 h-2/4 rounded-xl bg-secondary-50 mt-4 flex items-center justify-center lg:px-16">
           <form onSubmit={handleSubmit(login)} className="mt-5">
-            <div className="flex flex-col gap-2 md:gap-3 items-center">
+            <container className="flex flex-col gap-2 md:gap-3 items-center">
               <Input
                 label="Email"
                 placeholder="Enter your email"
@@ -86,7 +83,7 @@ function Login() {
               />
               <Button
                 type="submit"
-                className="w-2/4 mt-3 bg-violet-600 hover:bg-violet-700 cursor-pointer"
+                className="w-2/4 mt-3 bg-secondary-500 text-white border border-secondary-500 hover:bg-secondary-600 cursor-pointer"
                 disabled={!isValid}
               >
                 Login
@@ -96,22 +93,20 @@ function Login() {
                 autoClose={2000}
                 hideProgressBar={true}
               />
-            </div>
-            <div className="w-full flex justify-center items-center lg:mt-1 font-semibold text-[green]">
+            </container>
+            <div className="w-full flex justify-center items-center lg:mt-1">
               Don't have an account?{" "}
-              <Button
-                bgColor=""
-                textColor="text-[green]"
-                className="px-[5px] hover:text-[#ffbb00]"
-                onClick={buttonHandler}
+              <Link
+              className="px-2 py-3 rounded-xl bg-transparent hover:text-primary-600"
+              to="/signup"
               >
-                Sign up
-              </Button>
+              Sign up
+            </Link>
             </div>
           </form>
-        </div>
-      </div>
-    </div>
+        </section>
+      </main>
+    
   );
 }
 export default Login;

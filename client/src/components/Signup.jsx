@@ -1,7 +1,7 @@
 import React from "react";
-import { useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Button, Input} from "../design/index"
+import { Link } from "react-router-dom";
 import axios from "axios"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,7 +22,6 @@ const schema = z.object({
 
 
 function Signup(){
-    const navigate = useNavigate()
     
     //extracting from react hook form
     const {register, handleSubmit, reset, formState: { errors, isValid }} = useForm({
@@ -46,7 +45,7 @@ function Signup(){
             password : data.password
         }
         try {
-            await axios.post("http://localhost:3000/user/new", userinfo);
+            await axios.post(`http://localhost:${import.meta.env.VITE_PORT}/user/new`, userinfo);
             console.log("sign up successful");
             toast.success("Sign up successful");
             //added setTimeout because it was immediately naviagting to login and toast didn't look good
@@ -66,82 +65,92 @@ function Signup(){
 
 
     return(
-        <div className="bg-[#0e4b32]">
-        <div className="w-full h-screen flex flex-col items-center  bg-custom-radial-gradient2 bg-rad  text-white">
-        <div className="w-screen h-[4.5rem] shadow-md text-2xl flex items-center justify-center ">
-            <h1 className='w-44 p-1 flex items-center justify-center rounded-xl'>Moni Matter</h1>
-        </div>
-        <div className="w-full h-24 mt-7 flex flex-col items-center justify-center gap-2">
-            <h1 className="text-4xl font-semibold">Sign up</h1>
-            <h1 className="text-xl">Create an account to get started.</h1>
-        </div>
-        <div className="w-10/12 lg:w-5/12 md:w-7/12 md:h-4/6 h-5/6 rounded-xl mt-4 bg-white flex items-center justify-center lg:px-16 text-[#00804be8]">
-        <form onSubmit={handleSubmit(create)} className="mt-5">
-            <div className="flex flex-col gap-2 md:gap-3 items-center"> 
-            <div className="lg:flex lg:gap-4">
-            <div className="lg:flex lg:flex-col lg:mb-1 lg:w-1/2 mb-2">
-            {/*custom input element, can be found on design folder */}
-            <Input
-            label = "First Name"
-            placeholder="Enter your first name"
-                    {...register("fName", {
-                        required: true,
-                    })}
-            /> {errors.fName && <p className="text-red-400">{errors.fName.message}</p>}
+        
+        <main className="w-full h-screen flex flex-col items-center justify-center">
+            <header className="w-full h-24 mt-11 flex flex-col items-center justify-center gap-2">
+                <h1 className="text-4xl font-semibold">Sign up</h1>
+                <h1 className="text-xl">Create an account to get started.</h1>
+            </header>
+
+            <section className="w-10/11 h-3/5 rounded-xl mt-4 bg-secondary-50 flex items-start justify-center lg:px-16 lg:py-5 ">
+                <form onSubmit={handleSubmit(create)} >
+                    <container className="w-full h-full flex flex-col gap-2 md:gap-3 justify-center mt-3"> 
+                        <section className="lg:flex lg:gap-4">
+                            <div className="lg:w-1/2 lg:mb-2">
+                                <Input
+                                    label = "First Name"
+                                    placeholder="Enter your first name"
+                                    {...register("fName", {
+                                        required: true,
+                                    })}
+                                /> {errors.fName && <p className="text-red-400">{errors.fName.message}</p>}
+                            </div>
+                            <div className="lg:w-1/2 lg:mb-2" >
+                                <Input
+                                    label = "Last Name"
+                                    placeholder="Enter your last name"
+                                    {...register("lName", {
+                                        required: true,
+                                    })}
+                                /> {errors.lName && <p className="text-red-400">{errors.lName.message}</p>}
+                            </div>
+                        </section>
+
+                        <section className="lg:flex lg:gap-4">
+                            <div className="lg:w-1/2 lg:mb-2">
+                                <Input
+                                    label = "Email"
+                                    placeholder="Enter your email"
+                                    {...register("email", {
+                                        required: true,
+                                    })}
+                                /> {errors.email && <p className="text-red-400">{errors.email.message}</p>}
+                            </div>
+                            <div className="lg:w-1/2 lg:mb-2">
+                                <Input
+                                    label = "Phone no"
+                                    placeholder="Enter your phone number"
+                                    {...register("tel", {
+                                        required: true,
+                                    })}
+                                /> {errors.tel && <p className="text-red-400">{errors.tel.message}</p>}
+                            </div>
+                        </section>
+
+                        <section className="lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-4">
+                            <Input
+                                label = "Password"
+                                type = "password"
+                                placeholder="Enter password"
+                                {...register("password", {
+                                    required: true,
+                                })}
+                            /> {errors.password && <p className="text-red-400">{errors.password.message}</p>}
+
+                            {/*Custom button element*/}
+                            <Button type="submit" className="w-2/4 mt-5 bg-secondary-500 text-white border border-secondary-500 hover:bg-secondary-600 cursor-pointer" disabled={!isValid}>
+                                Create Account
+                            </Button> 
+                            <ToastContainer 
+                            position="top-center"
+                            autoClose={2000}
+                            hideProgressBar={true}
+                            />
+                        </section>
+            </container>
+            <div className="w-full flex justify-center items-center lg:mt-1 ">Already have an account? 
+            <Link
+              className="px-2 py-3 rounded-xl bg-transparent hover:text-primary-600"
+              to="/login"
+            >
+              Sign in
+            </Link>
             </div>
-            <div className="lg:flex lg:flex-col lg:w-1/2 ">
-            <Input
-            label = "Last Name"
-            placeholder="Enter your last name"
-                    {...register("lName", {
-                        required: true,
-                    })}
-            /> {errors.lName && <p className="text-red-400">{errors.lName.message}</p>}
-            </div>
-            </div>
-
-           <Input
-            label = "Email"
-            placeholder="Enter your email"
-                    {...register("email", {
-                        required: true,
-                    })}
-            /> {errors.email && <p className="text-red-400">{errors.email.message}</p>}
-
-            <Input
-            label = "Phone no"
-            placeholder="Enter your phone number"
-                    {...register("tel", {
-                        required: true,
-                    })}
-            /> {errors.tel && <p className="text-red-400">{errors.tel.message}</p>}
-
-            <Input
-            label = "Password"
-            type = "password"
-            placeholder="Enter password"
-                    {...register("password", {
-                        required: true,
-                    })}
-            /> {errors.password && <p className="text-red-400">{errors.password.message}</p>}
-
-            {/*Custom button element*/}
-            <Button type="submit" className="w-2/4 mt-3 bg-violet-600 hover:bg-violet-700 cursor-pointer" disabled={!isValid}>
-                        Create Account
-            </Button> 
-            <ToastContainer 
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={true}
-            />
-            </div>
-            <div className="w-full flex justify-center items-center lg:mt-1 font-semibold text-[green]">Already have an account? <Button bgColor="" textColor = 'text-[green]' className="px-1 hover:text-[#ffbb00]" onClick={buttonHandler}>Sign in</Button></div>
-
         </form>
         
-        </div>
-        </div>
-        </div>
+        </section>
+        </main>
+        
     )
 }
 export default Signup

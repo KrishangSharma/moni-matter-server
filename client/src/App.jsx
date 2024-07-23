@@ -11,19 +11,17 @@ import { Nav } from "./components/exports.js";
 function App() {
   return (
     <div className={`font-pops light`}>
-      <Nav />
+    <Nav/>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
         {/*temporarily removed private route functionality for ease of work while working on different routes */}
-        <Route path="/" element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/groups" element={<Groups />} />
           <Route path="/reports" element={<Reports />} />
-        </Route>
       </Routes>
     </div>
   );

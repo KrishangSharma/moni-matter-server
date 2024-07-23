@@ -3,7 +3,7 @@ import { NavLink as Link } from "react-router-dom";
 
 //temporarily removed all styling
 const Header = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const navItems = [
     { to: "/home", label: "Home" },
@@ -13,7 +13,7 @@ const Header = () => {
   ];
 
   return (
-    <nav className="w-screen h-28 border-b flex items-center justify-between px-10">
+    <nav className="w-screen h-28 border-b flex items-center justify-between px-10 absolute bg-white">
       <div className="w-1/2 h-full flex items-center gap-5">
         <Link to="/" className="text-4xl font-bold">
           Moni Matter
