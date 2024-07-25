@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      flex: {
+        center: 'display: flex; align-items: center; justify-content: center;',
+        between: 'display: flex; align-items: center; justify-content: between;'
+      },
       fontFamily: {
         pops: "Poppins",
       },

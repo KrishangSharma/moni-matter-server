@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useForm } from 'react-hook-form'
 import { Input, Button } from '../design'
-import TransactionsTwo from './TransactionMine'
 
 const Transactions = () => {
   const {register, handleSubmit, reset, formState: {errors} } = useForm()
@@ -9,12 +8,20 @@ const Transactions = () => {
   const createTransaction = ()=>{
     //temporarily removed the logic part
   }
+
+  //our defined categories for both income and expense for managing icons
+  const incomeCategories = ['Salary', 'Business', 'Investments'];
+  const expenseCategories = ['Rent', 'Groceries', 'Shopping'];
+
   return (
-    <div className='w-full h-screen flex'>
-      <div className='w-1/2 h-screen flex justify-center'>
+    
+      <div className='w-full h-screen flex justify-center'>
       <form onSubmit={handleSubmit(createTransaction)}>
-        <div className='flex flex-col gap-5 justify-center'>
-      <div className='w-72 h-10 bg-gray-400 mt-24 flex'>
+        
+        <div className='w-screen h-full flex flex-col bg-accent-100 items-center'>
+        <div className='w-full h-16 bg-white'>Moni Matter</div>
+
+      <section className='w-72 h-10 bg-gray-400 bottom-24 flex absolute'>
         <div className={`w-1/2 h-full flex items-center justify-center ${category === 'income' ? 'bg-green-500' : 'bg-transparent'}`}
           onClick={() => setCategory('income')}>
         <button
@@ -33,45 +40,74 @@ const Transactions = () => {
             Expense
           </button>
         </div>
-      </div>
+      </section>
+
+
       <input type="hidden" {...register('category')} value={category} />
       
+      <section className='w-full h-20  flex items-center justify-center gap-5 p-6 text-sm mt-2'>
+      <Input 
+        label = "Name"
+        placeholder="Enter name"
+          {...register("name", {
+            })}
+          /> 
+      
+      <Input 
+        label = "Amount"
+        type = "number"
+        placeholder="Enter amount"
+          {...register("amount", {
+              required: true,
+            })}
+          /> 
+      </section>
+
+      <section className='w-full h-20 px-6  text-sm flex items-center'>
       <Input 
         label = "Description"
         placeholder="Enter description"
           {...register("description", {
             })}
           /> 
-      
-      <Input 
-        label = "Amount"
-        placeholder="Enter amount"
-          {...register("amount", {
-              required: true,
-            })}
-          /> 
+      </section>
 
+      <section className='w-full h-20  flex items-center justify-center gap-5 p-6 text-sm mb-5'>
+        <div className='w-1/2'>
         <Input
         label = "Reciept"
         type = "file"
         accept="image/png, image/jpg, image/jpeg"
         {...register("receipt")}
         />
+        </div>
+
+        <div className='w-1/2'>
+        <label htmlFor="categoryType" className='block mb-1'>Category:</label>
+        <select id="categoryType" {...register('categoryType')} className='w-full p-[10px] border rounded-lg'>
+          {category === 'income'
+            ? incomeCategories.map((incomeCategory, index) => (
+                <option key={index} value={incomeCategory}>{incomeCategory}</option>
+              ))
+            : expenseCategories.map((expenseCategory, index) => (
+                <option key={index} value={expenseCategory}>{expenseCategory}</option>
+              ))
+          }
+        </select>
+      </div>
+      </section>
 
         <Button type="submit" bgColor='bg-violet-400' className='w-32'>
           Submit
         </Button>
-
-        <div>What we have right now</div>
+ 
+        
       
         </div>
       </form>
       </div>
-      <div className='w-1/2 h-screen flex justify-center'>
-        <TransactionsTwo/>
-      </div>
 
-    </div>
+   
   )
 }
 

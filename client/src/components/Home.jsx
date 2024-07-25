@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
    
-    <main className='w-full h-screen overflow-hidden flex justify-center '>
+    <main className='hidden w-full h-screen overflow-hidden flex justify-center '>
       <section className='w-[90%] h-4/5 bg-accent-50 mt-[8.4rem] flex justify-between px-12'>
 
         <section className='w-2/5 h-full p-9  flex flex-col items-center justify-center gap-5'>

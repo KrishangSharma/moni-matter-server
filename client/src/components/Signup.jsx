@@ -65,7 +65,14 @@ function Signup(){
 
 
     return(
-        
+        <div>
+            <nav className="w-screen h-28 border-b flex items-center justify-center px-10 absolute bg-white">
+                <div className=" flex items-center gap-5">
+                <Link to="/" className="text-3xl font-semibold">
+                    Moni Matter
+                </Link>
+                </div>
+            </nav>
         <main className="w-full h-screen flex flex-col items-center justify-center">
             <header className="w-full h-24 mt-11 flex flex-col items-center justify-center gap-2">
                 <h1 className="text-4xl font-semibold">Sign up</h1>
@@ -150,7 +157,7 @@ function Signup(){
         
         </section>
         </main>
-        
+        </div>
     )
 }
 export default Signup

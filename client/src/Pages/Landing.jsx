@@ -3,6 +3,14 @@ import { BackgroundCircles } from "../design/Circles";
 
 const Landing = () => {
   return (
+    <div>
+        <nav className="w-screen h-28 border-b flex items-center justify-center px-10 absolute bg-white">
+          <div className=" flex items-center gap-5">
+          <Link to="/" className="text-3xl font-semibold">
+            Moni Matter
+          </Link>
+          </div>
+      </nav>
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
       <div className="flex flex-col relative z-20">
         <div className="lg:flex lg:justify-center lg:items-center">
@@ -24,6 +32,7 @@ const Landing = () => {
         </div>
       </div>
       
+    </div>
     </div>
   );
 };
