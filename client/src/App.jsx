@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Landing, Login } from "./Pages/exports";
 import Signup from "./components/Signup.jsx";
 import Home from "./components/Home.jsx";
-import Transactions from "./components/TransactionMine.jsx";
+import Transactions from "./components/Transactions.jsx";
 import Layout from "./layout/Layout.jsx";
 import Groups from "./components/Groups.jsx";
 import Reports from "./components/Reports.jsx";

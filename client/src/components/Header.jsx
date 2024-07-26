@@ -7,6 +7,7 @@ import {
   Reports,
   Profile 
 } from "../assets/navicons/NavIcons";
+import { LightMode } from "../assets/otherIcons/Icons";
 
 //temporarily removed all styling
 const Header = () => {
@@ -22,20 +23,20 @@ const Header = () => {
 
   return (
    
-    <nav className="w-screen h-[4.5rem] md:h-28 bottom-0 md:top-0 border-t md:border-b flex items-center justify-center md:justify-between px-2 md:px-10 absolute bg-white">
-      <div className="w-full md:w-1/2 h-full flex items-center justify-between  md:justify-start gap-4 md:gap-5 text-sm px-5 md:pl-0 py-5">
-        <Link to="/home" className="hidden text-3xl lg:text-4xl font-bold md:block">
+    <nav className="w-screen h-[4.5rem] lg:h-28 bottom-0 lg:top-0 border-t lg:border-b flex items-center justify-center lg:justify-between px-2 lg:px-10 absolute bg-white">
+      <div className="w-full lg:w-1/2 h-full flex items-center justify-between  lg:justify-start gap-4 lg:gap-5 text-sm px-5 lg:pl-0 py-5">
+        <Link to="/home" className="hidden text-3xl lg:text-4xl font-bold lg:block">
           Moni Matter
         </Link>
         {loggedIn ? (
-          <div className="hidden h-1/3 w-[0.5px] rounded-full bg-secondary-500 md:block"></div>
+          <div className="hidden h-1/3 w-[0.5px] rounded-full bg-secondary-500 lg:block"></div>
         ) : null}
-        <div className="flex h-full w-full md:w-1/4 items-center justify-between gap-3 text-sm md:text-lg ">
+        <div className="flex h-full w-full lg:w-1/4 items-center justify-between gap-3 text-sm lg:text-lg ">
           {loggedIn
             ? navItems.map((item, index) => (
               
                 <Link key={index} to={item.to} className={"flex flex-col items-center justify-center"}>
-                 <item.icon className="block md:hidden w-8 h-8"/> 
+                 <item.icon className="block lg:hidden w-8 h-8"/> 
                   {item.label}
                 </Link>
                 
@@ -46,11 +47,11 @@ const Header = () => {
       {/* User Actions */}
       <div>
         {loggedIn ? (
-          <div className="hidden md:block"><Profile className="w-9 h-9"/></div>
+          <div className="hidden lg:block"><LightMode className="w-9 h-9"/></div>
         ) : (
           <Link
             to="/login"
-            className="border border-accent-500 rounded-md px-6 py-2 hover:bg-accent-500 hover:text-text-50 transition-colors duration-150"
+            className="border border-accent-500 rounded-lg px-6 py-2 hover:bg-accent-500 hover:text-text-50 transition-colors duration-150"
           >
             Login
           </Link>
