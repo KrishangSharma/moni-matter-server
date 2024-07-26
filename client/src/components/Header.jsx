@@ -15,16 +15,16 @@ const Header = () => {
   const navItems = [
     { to: "/home", label: "Home", icon: Home },
     { to: "/groups", label: "Groups", icon: Groups },
-    { to: "/transactions", label: "Add", icon: Add },
+    { to: "/transactions", label: "Transactions", icon: Add },
     { to: "/reports", label: "Reports", icon: Reports },
     { to: "/profile", label: "profile", icon: Profile}
   ];
 
   return (
    
-    <nav className="w-screen h-20 md:h-28 bottom-0 md:top-0 border-t md:border-b flex items-center justify-center md:justify-between px-2 md:px-10 absolute bg-white">
+    <nav className="w-screen h-[4.5rem] md:h-28 bottom-0 md:top-0 border-t md:border-b flex items-center justify-center md:justify-between px-2 md:px-10 absolute bg-white">
       <div className="w-full md:w-1/2 h-full flex items-center justify-between  md:justify-start gap-4 md:gap-5 text-sm px-5 md:pl-0 py-5">
-        <Link to="/" className="hidden text-3xl lg:text-4xl font-bold md:block">
+        <Link to="/home" className="hidden text-3xl lg:text-4xl font-bold md:block">
           Moni Matter
         </Link>
         {loggedIn ? (
@@ -35,7 +35,7 @@ const Header = () => {
             ? navItems.map((item, index) => (
               
                 <Link key={index} to={item.to} className={"flex flex-col items-center justify-center"}>
-                 <item.icon className="block md:hidden w-9 h-9"/> 
+                 <item.icon className="block md:hidden w-8 h-8"/> 
                   {item.label}
                 </Link>
                 

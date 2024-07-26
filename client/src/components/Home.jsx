@@ -8,7 +8,7 @@ const Home = () => {
 
   const transactions = [
     { id: 1, description: 'Grocery', amount: -5000.00, type: 'expense', date: '2024-07-01' },
-    { id: 2, description: 'Salary', amount: 200000.00, type: 'income', date: '2024-07-05' },
+    { id: 2, description: 'Salary', amount: 20000.00, type: 'income', date: '2024-07-05' },
     { id: 3, description: 'Electric Bill', amount: -7500.00, type: 'expense', date: '2024-07-10' },
     { id: 4, description: 'Freelance Work', amount: 30000.00, type: 'income', date: '2024-07-15' },
   ];
@@ -24,8 +24,8 @@ const Home = () => {
 
   return (
    
-    <main className='hidden w-full h-screen overflow-hidden flex justify-center '>
-      <section className='w-[90%] h-4/5 bg-accent-50 mt-[8.4rem] flex justify-between px-12'>
+    <main className=' w-full h-screen overflow-hidden flex justify-center '>
+      <section className='w-[90%] h-4/5  mt-[8.4rem] flex justify-between px-12'>
 
         <section className='w-2/5 h-full p-9  flex flex-col items-center justify-center gap-5'>
           <article className='w-full h-[25%] bg-secondary-300 rounded-lg p-5'>
@@ -59,7 +59,7 @@ const Home = () => {
 
         </section>
 
-        <section className='w-[55%] h-full p-9 bg-secondary-100 flex flex-col items-center justify-center gap-5'>
+        <section className='hidden w-[55%] h-full p-9 flex-col items-center justify-center gap-5 md:flex'>
           <article className='w-full h-[15%] bg-slate-500 rounded-lg'>
 
           </article>
